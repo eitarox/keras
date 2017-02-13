@@ -4,7 +4,7 @@ import numpy as np
 np.random.seed(1337)
 
 from keras.utils.test_utils import get_test_data
-from keras.optimizers import SGD, RMSprop, Adagrad, Adadelta, Adam, Adamax, Nadam
+from keras.optimizers import SGD, RMSprop, RMSpropGraves, Adagrad, Adadelta, Adam, Adamax, Nadam
 from keras.models import Sequential
 from keras.layers.core import Dense, Activation
 from keras.utils.np_utils import to_categorical
@@ -48,6 +48,11 @@ def test_sgd():
 def test_rmsprop():
     _test_optimizer(RMSprop())
     _test_optimizer(RMSprop(decay=1e-3))
+
+    
+def test_rmspropgraves():
+    _test_optimizer(RMSpropGraves())
+    _test_optimizer(RMSpropGraves(decay=1e-3))
 
 
 def test_adagrad():
